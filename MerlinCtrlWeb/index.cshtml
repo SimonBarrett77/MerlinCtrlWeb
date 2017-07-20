@@ -1,0 +1,244 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+
+
+<div class="alert alert-info alert-dismissible fade show" role="alert" style="display:none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Heads up!</strong> This page is undergoing maintenence.
+</div>
+
+
+<h1>Dashboard</h1>
+<section class="row margin-top-25">
+
+    <div class="col-lg-3 col-md-12">
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">83</h4>
+            <h4>Subscribers</h4>
+            <p><a href="#">20 Expiring this year</a> | <a href="#">4 Expiring this month</a></p>
+  
+           
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-12">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">48</h4>
+            <h4>Logins Today</h4>
+            
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-12">
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">68</h4>
+            <h4>Trialists</h4>
+            <p>Aww yeah, you successfully read this important alert message.</p>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-12">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">39</h4>
+            <h4>New Messages</h4>
+            <p>Aww yeah, you successfully read this important alert message.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="row margin-top-25">
+    <h1>Search</h1>
+    <div class="col-lg-12 col-md-12">
+        <div class="form-inline" style="float:right;">
+            Plan:&nbsp;
+            <select id="sortByPlan" class="form-control">
+                <option value="">Show All</option>
+                <optgroup label="NumberWorx">
+                    <option value="NJ1">NJ1</option>
+                    <option value="NJ2">NJ2</option>
+                    <option value="NJ3">NJ3</option>
+                </optgroup>
+
+                <optgroup label="NumberJuice">
+                    <option value="NX1">NX1</option>
+                    <option value="NX2">NX2</option>
+                    <option value="NX3">NX3</option>
+                </optgroup>
+            </select>
+
+            @*<div class="form-group">
+                    <div class="dropdown">
+                        Account Type:&nbsp;
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Please Select
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>*@
+            &nbsp; &nbsp;
+
+            <div class="form-group">
+                From:&nbsp;
+                <div class='input-group date datetimepicker' id='datetimepicker1'>
+
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="icon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            &nbsp; &nbsp;
+            <div class="form-group float-xl-right">
+                To:&nbsp;
+                <div class='input-group date datetimepicker' id='datetimepicker2'>
+
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="icon-calendar"></span>
+                    </span>
+                </div>
+
+                <label class="checkbox-inline"><input type="checkbox" value="">NX</label>
+                <label class="checkbox-inline"><input type="checkbox" value="">RX</label>
+                <label class="checkbox-inline"><input type="checkbox" value="">NJ</label>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+<section class="row margin-top-50">
+    <div class="col-lg-12 col-md-12">
+
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">
+                    <img src="images/octicons/search.svg" />
+                </button>
+            </span>
+        </div>
+
+    </div>
+</section>
+
+<section class="row margin-top-25">
+    <p><label id="lblCompanyCount">0</label>&nbsp;Companies Found</p>
+    <div class="table-responsive">
+        <table id="tblBusiness" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Business Name</th>
+                    <th>Created</th>
+                    <th>Trial Ends</th>
+                    <th>Email</th>
+                    <th>Last Login</th>
+                    <th>Plan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*<tr>
+                       <td colspan="7">Loading companies...</td>
+                    </tr>*@
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#sortByPlan").on("change", function () {
+                var selectedItem = $(this).val();
+
+                clearData();
+                var businessList = getData("", selectedItem, "", "");
+                showData(businessList);
+            });
+
+
+            initialise();
+
+
+            $('.datetimepicker').datetimepicker({
+                format: 'DD MMM YYYY'
+            });
+
+            function initialise() {
+                clearData();
+                var businessList = getData("", "", "", "");
+                showData(businessList);
+            }
+
+
+            function clearData() {
+                $("#tblBusiness tr:gt(0)").remove();
+
+            }
+
+            function getData(searchCriteria, accountType, dateFrom, dateTo) {
+                var businessMgr = new BusinessMgr();
+                businessList = businessMgr.GetAll(searchCriteria, accountType, dateFrom, dateTo);
+                return businessList;
+            }
+
+
+            function showData(businessList) {
+                // Set the company count label
+                $("#lblCompanyCount").text(businessList.length);
+
+                var html = "";
+
+                for (var i = 0; i < businessList.length; i++) {
+                    html += "<tr>";
+                    html += "<td>";
+                    html += businessList[i].BusinessID;
+                    html += "</td>";
+                    html += "<td>";
+                    html += businessList[i].BusinessName;
+                    html += "</td>";
+                    html += "<td>";
+                    html += moment(businessList[i].CreateDate).format('DD/MM/YYYY');  // uses moment.js
+                    html += "</td>";
+                    html += "<td>";
+                    html += moment(businessList[i].ValidTo).format('DD/MM/YYYY');  // uses moment.js
+                    html += "</td>";
+                    html += "<td>";
+                    html += businessList[i].LoginEmail;
+                    html += "</td>";
+                    html += "<td>";
+                    html += businessList[i].LastLogin;
+                    html += "</td>";
+                    html += "<td>";
+                    html += businessList[i].AccountPackage;
+                    html += "</td>";
+                    html += "<td>";
+                    html += "<a href='business-details.cshtml?id=" + businessList[i].BusinessID + "'><img src='images/octicons/search.svg'/></a>";
+                    html += "</td>";
+                    html += "</tr>";
+                }
+                $("#tblBusiness").append(html);
+            }
+
+            // Event handlers
+        });
+    </script>
+}

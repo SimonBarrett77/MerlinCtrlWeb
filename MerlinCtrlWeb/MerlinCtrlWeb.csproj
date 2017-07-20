@@ -47,6 +47,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -56,6 +59,21 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -66,18 +84,293 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="add-note.cshtml" />
+    <None Include="bin\MerlinCtrlWeb.dll.config" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="business-details.cshtml" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="index.cshtml" />
+    <Content Include="obj\Debug\CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\MerlinCtrlWeb.csprojResolveAssemblyReference.cache" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="signin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebPage1.cshtml" />
+    <Content Include="_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\MerlinCtrlWeb.dll" />
+    <Content Include="bin\MerlinCtrlWeb.pdb" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\signin.css" />
+    <Content Include="images\octicons\alert.svg" />
+    <Content Include="images\octicons\arrow-down.svg" />
+    <Content Include="images\octicons\arrow-left.svg" />
+    <Content Include="images\octicons\arrow-right.svg" />
+    <Content Include="images\octicons\arrow-small-down.svg" />
+    <Content Include="images\octicons\arrow-small-left.svg" />
+    <Content Include="images\octicons\arrow-small-right.svg" />
+    <Content Include="images\octicons\arrow-small-up.svg" />
+    <Content Include="images\octicons\arrow-up.svg" />
+    <Content Include="images\octicons\beaker.svg" />
+    <Content Include="images\octicons\bell.svg" />
+    <Content Include="images\octicons\bold.svg" />
+    <Content Include="images\octicons\book.svg" />
+    <Content Include="images\octicons\bookmark.svg" />
+    <Content Include="images\octicons\briefcase.svg" />
+    <Content Include="images\octicons\broadcast.svg" />
+    <Content Include="images\octicons\browser.svg" />
+    <Content Include="images\octicons\bug.svg" />
+    <Content Include="images\octicons\calendar.svg" />
+    <Content Include="images\octicons\check.svg" />
+    <Content Include="images\octicons\checklist.svg" />
+    <Content Include="images\octicons\chevron-down.svg" />
+    <Content Include="images\octicons\chevron-left.svg" />
+    <Content Include="images\octicons\chevron-right.svg" />
+    <Content Include="images\octicons\chevron-up.svg" />
+    <Content Include="images\octicons\circle-slash.svg" />
+    <Content Include="images\octicons\circuit-board.svg" />
+    <Content Include="images\octicons\clippy.svg" />
+    <Content Include="images\octicons\clock.svg" />
+    <Content Include="images\octicons\cloud-download.svg" />
+    <Content Include="images\octicons\cloud-upload.svg" />
+    <Content Include="images\octicons\code.svg" />
+    <Content Include="images\octicons\comment-discussion.svg" />
+    <Content Include="images\octicons\comment.svg" />
+    <Content Include="images\octicons\credit-card.svg" />
+    <Content Include="images\octicons\dash.svg" />
+    <Content Include="images\octicons\dashboard.svg" />
+    <Content Include="images\octicons\database.svg" />
+    <Content Include="images\octicons\desktop-download.svg" />
+    <Content Include="images\octicons\device-camera-video.svg" />
+    <Content Include="images\octicons\device-camera.svg" />
+    <Content Include="images\octicons\device-desktop.svg" />
+    <Content Include="images\octicons\device-mobile.svg" />
+    <Content Include="images\octicons\diff-added.svg" />
+    <Content Include="images\octicons\diff-ignored.svg" />
+    <Content Include="images\octicons\diff-modified.svg" />
+    <Content Include="images\octicons\diff-removed.svg" />
+    <Content Include="images\octicons\diff-renamed.svg" />
+    <Content Include="images\octicons\diff.svg" />
+    <Content Include="images\octicons\ellipses.svg" />
+    <Content Include="images\octicons\ellipsis.svg" />
+    <Content Include="images\octicons\eye.svg" />
+    <Content Include="images\octicons\file-binary.svg" />
+    <Content Include="images\octicons\file-code.svg" />
+    <Content Include="images\octicons\file-directory.svg" />
+    <Content Include="images\octicons\file-media.svg" />
+    <Content Include="images\octicons\file-pdf.svg" />
+    <Content Include="images\octicons\file-submodule.svg" />
+    <Content Include="images\octicons\file-symlink-directory.svg" />
+    <Content Include="images\octicons\file-symlink-file.svg" />
+    <Content Include="images\octicons\file-text.svg" />
+    <Content Include="images\octicons\file-zip.svg" />
+    <Content Include="images\octicons\file.svg" />
+    <Content Include="images\octicons\flame.svg" />
+    <Content Include="images\octicons\fold.svg" />
+    <Content Include="images\octicons\gear.svg" />
+    <Content Include="images\octicons\gift.svg" />
+    <Content Include="images\octicons\gist-secret.svg" />
+    <Content Include="images\octicons\gist.svg" />
+    <Content Include="images\octicons\git-branch.svg" />
+    <Content Include="images\octicons\git-commit.svg" />
+    <Content Include="images\octicons\git-compare.svg" />
+    <Content Include="images\octicons\git-merge.svg" />
+    <Content Include="images\octicons\git-pull-request.svg" />
+    <Content Include="images\octicons\globe.svg" />
+    <Content Include="images\octicons\grabber.svg" />
+    <Content Include="images\octicons\graph.svg" />
+    <Content Include="images\octicons\heart.svg" />
+    <Content Include="images\octicons\history.svg" />
+    <Content Include="images\octicons\home.svg" />
+    <Content Include="images\octicons\horizontal-rule.svg" />
+    <Content Include="images\octicons\hubot.svg" />
+    <Content Include="images\octicons\inbox.svg" />
+    <Content Include="images\octicons\info.svg" />
+    <Content Include="images\octicons\issue-closed.svg" />
+    <Content Include="images\octicons\issue-opened.svg" />
+    <Content Include="images\octicons\issue-reopened.svg" />
+    <Content Include="images\octicons\italic.svg" />
+    <Content Include="images\octicons\jersey.svg" />
+    <Content Include="images\octicons\key.svg" />
+    <Content Include="images\octicons\keyboard.svg" />
+    <Content Include="images\octicons\law.svg" />
+    <Content Include="images\octicons\light-bulb.svg" />
+    <Content Include="images\octicons\link-external.svg" />
+    <Content Include="images\octicons\link.svg" />
+    <Content Include="images\octicons\list-ordered.svg" />
+    <Content Include="images\octicons\list-unordered.svg" />
+    <Content Include="images\octicons\location.svg" />
+    <Content Include="images\octicons\lock.svg" />
+    <Content Include="images\octicons\logo-gist.svg" />
+    <Content Include="images\octicons\logo-github.svg" />
+    <Content Include="images\octicons\mail-read.svg" />
+    <Content Include="images\octicons\mail-reply.svg" />
+    <Content Include="images\octicons\mail.svg" />
+    <Content Include="images\octicons\mark-github.svg" />
+    <Content Include="images\octicons\markdown.svg" />
+    <Content Include="images\octicons\megaphone.svg" />
+    <Content Include="images\octicons\mention.svg" />
+    <Content Include="images\octicons\milestone.svg" />
+    <Content Include="images\octicons\mirror.svg" />
+    <Content Include="images\octicons\mortar-board.svg" />
+    <Content Include="images\octicons\mute.svg" />
+    <Content Include="images\octicons\no-newline.svg" />
+    <Content Include="images\octicons\note.svg" />
+    <Content Include="images\octicons\octoface.svg" />
+    <Content Include="images\octicons\organization.svg" />
+    <Content Include="images\octicons\package.svg" />
+    <Content Include="images\octicons\paintcan.svg" />
+    <Content Include="images\octicons\pencil.svg" />
+    <Content Include="images\octicons\person.svg" />
+    <Content Include="images\octicons\pin.svg" />
+    <Content Include="images\octicons\plug.svg" />
+    <Content Include="images\octicons\plus-small.svg" />
+    <Content Include="images\octicons\plus.svg" />
+    <Content Include="images\octicons\primitive-dot.svg" />
+    <Content Include="images\octicons\primitive-square.svg" />
+    <Content Include="images\octicons\project.svg" />
+    <Content Include="images\octicons\pulse.svg" />
+    <Content Include="images\octicons\question.svg" />
+    <Content Include="images\octicons\quote.svg" />
+    <Content Include="images\octicons\radio-tower.svg" />
+    <Content Include="images\octicons\reply.svg" />
+    <Content Include="images\octicons\repo-clone.svg" />
+    <Content Include="images\octicons\repo-force-push.svg" />
+    <Content Include="images\octicons\repo-forked.svg" />
+    <Content Include="images\octicons\repo-pull.svg" />
+    <Content Include="images\octicons\repo-push.svg" />
+    <Content Include="images\octicons\repo.svg" />
+    <Content Include="images\octicons\rocket.svg" />
+    <Content Include="images\octicons\rss.svg" />
+    <Content Include="images\octicons\ruby.svg" />
+    <Content Include="images\octicons\screen-full.svg" />
+    <Content Include="images\octicons\screen-normal.svg" />
+    <Content Include="images\octicons\search.svg" />
+    <Content Include="images\octicons\server.svg" />
+    <Content Include="images\octicons\settings.svg" />
+    <Content Include="images\octicons\shield.svg" />
+    <Content Include="images\octicons\sign-in.svg" />
+    <Content Include="images\octicons\sign-out.svg" />
+    <Content Include="images\octicons\smiley.svg" />
+    <Content Include="images\octicons\squirrel.svg" />
+    <Content Include="images\octicons\star.svg" />
+    <Content Include="images\octicons\stop.svg" />
+    <Content Include="images\octicons\sync.svg" />
+    <Content Include="images\octicons\tag.svg" />
+    <Content Include="images\octicons\tasklist.svg" />
+    <Content Include="images\octicons\telescope.svg" />
+    <Content Include="images\octicons\terminal.svg" />
+    <Content Include="images\octicons\text-size.svg" />
+    <Content Include="images\octicons\three-bars.svg" />
+    <Content Include="images\octicons\thumbsdown.svg" />
+    <Content Include="images\octicons\thumbsup.svg" />
+    <Content Include="images\octicons\tools.svg" />
+    <Content Include="images\octicons\trashcan.svg" />
+    <Content Include="images\octicons\triangle-down.svg" />
+    <Content Include="images\octicons\triangle-left.svg" />
+    <Content Include="images\octicons\triangle-right.svg" />
+    <Content Include="images\octicons\triangle-up.svg" />
+    <Content Include="images\octicons\unfold.svg" />
+    <Content Include="images\octicons\unmute.svg" />
+    <Content Include="images\octicons\unverified.svg" />
+    <Content Include="images\octicons\verified.svg" />
+    <Content Include="images\octicons\versions.svg" />
+    <Content Include="images\octicons\watch.svg" />
+    <Content Include="images\octicons\x.svg" />
+    <Content Include="images\octicons\zap.svg" />
+    <Content Include="images\sidebarToggle.png" />
+    <Content Include="js\AccountMgr.js" />
+    <Content Include="js\BusinessMgr.js" />
+    <Content Include="js\BusinessSubscriptionMgr.js" />
+    <Content Include="js\global.js" />
+    <Content Include="js\NotesMgr.js" />
+    <Content Include="js\StaffMgr.js" />
+    <Content Include="obj\Debug\MerlinCtrlWeb.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\MerlinCtrlWeb.dll" />
+    <Content Include="obj\Debug\MerlinCtrlWeb.pdb" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,148 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+<h1>Business Details</h1>
+
+@*<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Heads up!</strong> This page is undergoing maintenence.
+</div>*@
+
+  <section class="row margin-top-25">
+    
+      <div class="container">
+          <a class="btn btn-info" href="~/index.cshtml">< Back</a>&nbsp;
+          <a class="btn btn-primary" href="#" style="float:right;">Login to users account</a>
+      </div>
+
+          <div class="container margin-top-25">
+              <h2>My Test Company</h2>
+              <br />
+              <div class="form-group row">
+                  <label for="example-text-input" class="col-2 col-form-label">Business Name</label>
+                  <div class="col-10">
+                      <input class="form-control" type="text" value="Test Company" id="example-text-input">
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="example-search-input" class="col-2 col-form-label">Business Type</label>
+                  <div class="col-10">
+                      <select class="form-control">
+                          <optgroup label="NumberWorx">
+                              <option>NJ1</option>
+                              <option>NJ2</option>
+                              <option>NJ3</option>
+                          </optgroup>
+
+                          <optgroup label="NumberJuice">
+                              <option>NX1</option>
+                              <option>NX2</option>
+                              <option>NX3</option>
+                          </optgroup>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="example-email-input" class="col-2 col-form-label">Email</label>
+                  <div class="col-10">
+                      <input class="form-control" type="email" value="simon@numberworx.co.uk" id="example-email-input">
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="example-url-input" class="col-2 col-form-label">URL</label>
+                  <div class="col-10">
+                      <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
+                  </div>
+              </div>
+    
+
+              <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                      <p class="form-control-static"><a href="#">Change</a></p>
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                  <label for="example-number-input" class="col-2 col-form-label">Active</label>
+                  <div class="col-10">
+                      <select class="form-control">
+                          <option>True</option>
+                          <option>False</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="example-datetime-local-input" class="col-2 col-form-label">Last Login</label>
+                  <div class="col-10">
+                      <input class="form-control" value="2011-08-19 13:45:00" id="example-datetime-local-input">
+                  </div>
+              </div>
+              <div class="float-right">
+
+                  <a class="btn btn-primary" href="#">Save Changes</a>
+              </div>
+          </div>
+</section>
+
+
+
+    <section class="row margin-top-50">
+        <div class="container">
+            <input id="btnAddNote" type="button" class="btn btn-primary" style="float:right;" value="Add Note" />             
+            <br />
+            <h2>Notes</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Created</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @*<tr>
+                           <td colspan="7">Loading companies...</td>
+                        </tr>*@
+                        <tr class="clickable-row" data-id="123456">
+                            <td>#</td>
+                            <td>My little test note</td>
+                            <td>29/06/2017</td>
+                            <td>Setup</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+
+</section>
+
+
+    @section Scripts{
+        <script type="text/javascript">
+            $(function () {
+                $('.datetimepicker').datetimepicker({
+                    format: 'DD MMM YYYY'
+                });
+
+
+               // doGetBusinesses();
+
+                // Event handlers
+                $(".clickable-row").on("click", function () {
+                    // expand table row
+                });
+
+                $("#btnAddNote").on("click", function () {
+                    location.href = "add-note.cshtml";
+                });
+
+            });
+        </script>
+
+    }

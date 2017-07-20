@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+<h1>Add Note</h1>
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Heads up!</strong> This page is undergoing maintenence.
+</div>
+
+  <section class="row margin-top-25">
+    
+    <div class="container">
+        
+        <h2>New Note</h2>       
+        <br/>
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Note Title</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="example-text-input">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Note Body</label>
+            <div class="col-10">
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-email-input" class="col-2 col-form-label">Type</label>
+            <div class="col-10">
+                <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                  </select>
+            </div>
+        </div>
+           
+        <div class="float-right">
+            <input id="btnBack" type="button" class="btn btn-primary" value="Cancel" />&nbsp;
+            <input id="btnSave" type="button" class="btn btn-primary" value="Save" />
+        </div>
+    </div>
+      </section>
+
+    
+    @section Scripts{
+        <script type="text/javascript">
+            $(function () {
+                $('.datetimepicker').datetimepicker({
+                    format: 'DD MMM YYYY'
+                });
+               
+                // Event handlers
+                $(".clickable-row").on("click", function () {
+                    // expand table row
+                });
+
+                $("#btnBack").on("click", function () {
+                    location.href = url + "business-details.cshtml";
+                });
+
+                $("#btnSave").on("click", function () {
+                    location.href = url + "business-details.cshtml";
+                });
+            });
+        </script>
+
+    }

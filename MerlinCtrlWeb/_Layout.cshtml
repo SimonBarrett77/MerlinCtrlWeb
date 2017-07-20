@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>@Page.Title</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="~/styles.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    @RenderSection("head", required: false)
+</head>
+
+<body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        @* Toggle sidebar button *@
+        <img id="sidebarToggle" class="sidebar-toggle-img"  src="~/images/sidebarToggle.png" />
+       
+        <a class="navbar-brand col-2" href="#">Merlin Control Panel</a>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li>
+                    <span class="text-white">Hello User</span>
+                    &nbsp;
+                    <a class="btn btn-primary" href="~/signin.cshtml?do=logout">Logout</a>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar" >
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Export</a>
+                    </li>
+                </ul>
+
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Intranet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Stats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Enquiries</a>
+                    </li>
+                </ul>
+
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Notifications</a>
+                    </li>
+
+                </ul>
+            </nav>
+            <main id="main" class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="~/js/NotesMgr.js"></script>
+    <script src="~/js/AccountMgr.js"></script>
+    <script src="~/js/BusinessSubscriptionMgr.js"></script>
+    <script src="~/js/BusinessMgr.js"></script>
+    <script src="~/js/StaffMgr.js"></script>
+    <script src="~/js/global.js"></script>
+    <script type="text/javascript">
+        
+        var accountMgr = new AccountMgr();
+        // Validate the user is logged in.
+        if (!accountMgr.Validate()) {
+            location.href = 'signin.cshtml';
+        }
+
+        $("#sidebarToggle").on("click", function () {
+            var sidebarIsOpen = $("main").hasClass("col-12");
+          
+            if (sidebarIsOpen) {
+                $("#sidebar").show();
+                $("main").removeClass("col-12");
+                $("main").addClass("col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3");
+            
+            } else {
+                $("main").removeClass();
+                $("main").addClass("col-12");
+                $("#sidebar").hide();
+               
+            }
+
+
+
+        });
+
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

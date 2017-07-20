@@ -1,0 +1,121 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin Merlin Ctrl</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/signin.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form id="frmSignin" class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+   
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <p><input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></p>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <p><input type="password" id="inputPassword" class="form-control" placeholder="Password" required onkeypress="hideAlert(); capLock(event)">   </p>
+               
+                <div id="divCaps" class="alert alert-warning" role="alert" style="display:none;">
+                    <strong>Warning!</strong>&nbsp;Caps Lock is on.
+                </div> 
+                <div id="AlertMsgDiv" role="alert" style="display:none;">
+
+                </div>
+        
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+ 
+            <button id="btnSignIn" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            
+        </form>
+
+    </div> <!-- /container -->
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/js/global.js"></script>
+    <script src="~/js/AccountMgr.js"></script>
+    <script src="~/js/StaffMgr.js"></script>
+
+
+
+
+<script type="text/javascript">
+
+    function hideAlert() {
+        if ($("#AlertMsgDiv").css("display") != "none") {
+            $("#AlertMsgDiv").hide();           
+        } 
+
+    }
+
+    function capLock(e) {
+        kc = e.keyCode ? e.keyCode : e.which;
+        sk = e.shiftKey ? e.shiftKey : ((kc == 16) ? true : false);
+       
+        if (((kc >= 65 && kc <= 90) && !sk) || ((kc >= 97 && kc <= 122) && sk)) {
+            
+            $("#divCaps").show();
+        } else {
+            $("#divCaps").hide();
+        }
+    }
+    $(function () {
+        // Event Handlers
+       
+
+
+
+        // Check url for 'do' events
+        switch ( getSearchParams('do') ) {
+            case "logout":
+                showAlert("AlertMsgDiv", "<strong>Session Ended</strong> You have successully logged out", "info");
+                break;
+            case "sessionexpired":
+                showAlert("AlertMsgDiv", "<strong>Session Expired</strong> You have been logged out", "info");
+                break;
+        }
+
+        // Sign in button click
+        $("#btnSignIn").on("click", function (e) {
+            e.preventDefault();
+            var userName = $("#inputEmail").val();
+            var password = $("#inputPassword").val();
+            var accountMgr = new AccountMgr();
+
+            if (userName !== "" && password !== "") {
+
+                var loginResult = accountMgr.Authenticate(userName, password);
+
+                if (loginResult.Success) {                    
+                    showAlert("AlertMsgDiv", "<strong>Authenticated</strong> Logging in...", "success");
+                    location.href = url + "index.cshtml";
+                    return false;
+                } else {
+                    showAlert("AlertMsgDiv", "<strong>Oops!</strong> Email or password not recognised", "danger");
+                    return false;
+                }
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
